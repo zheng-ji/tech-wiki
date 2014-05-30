@@ -48,7 +48,8 @@ ansible-playbook deploy.yaml --aks-sudo-pass
 
 
 ```
-   -hosts: webservers vars:
+   -hosts: webservers 
+    vars:
        src: readme
        des: readme
     remote_user: zj

@@ -1,0 +1,20 @@
+---
+- hosts: webservers
+  vars:
+      src: /home/zj/mywiki/content/Sys/ansible.md
+      des: /home/zj/mywiki/content/Sys/ansible.md
+  remote_user: zj
+  tasks:
+      - name: make sure nginx is running
+        service: name=nginx state=started
+        sudo: yes
+
+      - name: scp {{src}} to ramnode {{des}}
+        template: src={{src}} dest={{des}}
+
+      - name:  wiki
+        shell: cd ~/mywiki && simiki generate 
+
+      - name:  start wiki
+        shell: sudo restart wiki
+        sudo: yes

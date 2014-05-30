@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>ansible 命令 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » ansible 命令
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">ansible 命令</div>
+    <div id="content">
+        <ul>
+<li>安装</li>
+</ul>
+<div class="hlcode"><pre>sudo apt-get install ansible 
+or
+sudo pip install ansible
+------
+
+* 生成ssh-key
+
+在指挥机： ssh-keygen 生成key
+将公钥发送给将要管理的机器 
+ssh-copy-id -i id_rsa xx@xxxxxxx
+
+编辑 /etc/ansible/hosts , 添加组
+</pre></div>
+
+
+<p>[webservers]
+23.226.225.46</p>
+<div class="hlcode"><pre>* 使用
+</pre></div>
+
+
+<p>zj@zheng-ji:/etc/ansible$ ansible -i hosts all -m ping -u zj
+23.226.225.46 | success &gt;&gt; {
+    "changed": false,
+    "ping": "pong"
+}</p>
+<p>zj@zheng-ji:/etc/ansible$ ansible  all -m ping -u zj
+23.226.225.46 | success &gt;&gt; {
+    "changed": false,
+    "ping": "pong"
+}</p>
+<div class="hlcode"><pre>* adhoc
+</pre></div>
+
+
+<p>ansible vm -m raw -a 'sudo pip install virtualenv' -uvagrant
+```</p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

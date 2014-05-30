@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>shell 技巧 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » shell 技巧
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">shell 技巧</div>
+    <div id="content">
+        <ul>
+<li>shift 使用</li>
+</ul>
+<table class="hlcodetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="hlcode"><pre><span class="c">#!/bin/bash</span>
+<span class="k">until</span> <span class="o">[</span> <span class="nv">$# </span>-eq 0 <span class="o">]</span>
+<span class="k">do</span>
+<span class="nb">echo</span> <span class="s2">&quot;$@&quot;</span>
+<span class="nb">shift</span>
+<span class="k">done</span>
+</pre></div>
+</td></tr></table>
+
+<p>Shift命令一次移动参数的个数由其所带的参数指定。例如当shell程序处理完前九个命令行参数后，可以使用shift 9命令把$10移到$1 重要用途,Bash定义了9个位置变量，从$1到$9,这并不意味着用户在命令行只能使用9个参数，借助shift命令可以访问多于9个的参数</p>
+<p>看见作用了吧。每次运行shift(不带参数的),销毁一个参数，后面的参数前移
+输出如下</p>
+<div class="hlcode"><pre># ./test.sh 1 2 3 4 5 6 7 8 9 10
+1 2 3 4 5 6 7 8 9 10
+2 3 4 5 6 7 8 9 10
+3 4 5 6 7 8 9 10
+4 5 6 7 8 9 10
+5 6 7 8 9 10
+6 7 8 9 10
+7 8 9 10
+8 9 10
+9 10
+10 
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

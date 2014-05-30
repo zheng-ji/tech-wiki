@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>mysql skill - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#DB">DB</a> » mysql skill
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">mysql skill</div>
+    <div id="content">
+        <ul>
+<li>将数据导出csv文件：</li>
+</ul>
+<div class="hlcode"><pre>select * from t_mis into outfile &#39;F:\\mytable.csv&#39; fields terminated by &#39;,&#39; optionally enclosed by &#39;&quot;&#39; lines terminated by &#39;\n&#39;;
+</pre></div>
+
+
+<ul>
+<li>权限赋予</li>
+</ul>
+<div class="hlcode"><pre>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;newpass&#39;;
+</pre></div>
+
+
+<ul>
+<li>Mysql Has Gone Away</li>
+</ul>
+<div class="hlcode"><pre>wait_timeout=180 设置长久些
+max_allowed_package 可以设置大一点
+</pre></div>
+
+
+<ul>
+<li>mysql无法启动Could not find MySQL server (/usr/bin/mysqld_safe)
+删除my.cnf rm /etc/mysql/my.cnf</li>
+</ul>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

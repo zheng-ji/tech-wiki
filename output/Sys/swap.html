@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>swap 使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » swap 使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">swap 使用</div>
+    <div id="content">
+        <ul>
+<li>暂时关闭SWAP，重启后恢复</li>
+</ul>
+<div class="hlcode"><pre>swapoff   -a
+</pre></div>
+
+
+<ul>
+<li>. 永久关闭SWAP</li>
+</ul>
+<div class="hlcode"><pre>vim /etc/fstab
+# swap was on /dev/sda11 during installation
+#UUID=0a55fdb5-a9d8-4215-80f7-f42f75644f69 none  swap    sw      0       0
+</pre></div>
+
+
+<p>注释掉SWAP分区项，即可</p>
+<p>*. 查看SWAP分区大小</p>
+<div class="hlcode"><pre>cat /proc/meminfo
+SwapTotal:             0 kB
+wapFree:              0 kB
+</pre></div>
+
+
+<p>如果上面二项目都为0，说明没有swap分区；如果不为0，则说明有此分区</p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

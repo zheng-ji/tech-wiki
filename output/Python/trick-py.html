@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>python 小技巧 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Python">Python</a> » python 小技巧
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">python 小技巧</div>
+    <div id="content">
+        <ul>
+<li>
+<h2 id="_1"><code>*</code>号传参数</h2>
+</li>
+</ul>
+<p>一个<code>*</code>加上形参名的方式来表示这个函数的实参个数不定，可能为0个也可能为n个。注意一点是，不管有多少个，在函数内部都被存放在以形参名为标识符的tuple中。</p>
+<hr />
+<ul>
+<li>
+<h2 id="join">join 的使用, 多于组装字符串</h2>
+</li>
+</ul>
+<div class="hlcode"><pre> <span class="k">def</span> <span class="nf">gen_key</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+
+
+<hr />
+<ul>
+<li>
+<h2 id="yield">yield 使用</h2>
+个人认为yield在函数中的作用就是保持函数当前的状态，并返回一个值</li>
+</ul>
+<div class="hlcode"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&#39;Hello&#39;</span>
+    <span class="k">yield</span> <span class="s">&#39;world&#39;</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">test</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+
+
+<p>输出了：</p>
+<div class="hlcode"><pre>Hello
+world
+</pre></div>
+
+
+<p>试试这个,有感性认识了。</p>
+<div class="hlcode"><pre><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+  <span class="k">print</span> <span class="n">n</span>
+</pre></div>
+
+
+<hr />
+<ul>
+<li>
+<h2 id="partial">partial 偏函数</h2>
+</li>
+</ul>
+<p>函数式编程的思想。可以理解成绑定了一部分参数的函数。作用就是少传参数，更短，更简洁。</p>
+<div class="hlcode"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span><span class="n">timedelta</span>  
+<span class="k">def</span> <span class="nf">GetNextDay</span><span class="p">(</span><span class="n">baseday</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  
+    <span class="k">return</span> <span class="nb">str</span><span class="p">((</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">baseday</span><span class="p">),</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">date</span><span class="p">())</span>  
+</pre></div>
+
+
+<p>按照常规做法，要获取这些“x日”的日期，需要</p>
+<div class="hlcode"><pre><span class="n">GetNextDay</span><span class="p">(</span><span class="n">selected_day</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  
+<span class="n">GetNextDay</span><span class="p">(</span><span class="n">selected_day</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>  
+<span class="n">GetNextDay</span><span class="p">(</span><span class="n">selected_day</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>  
+<span class="n">GetNextDay</span><span class="p">(</span><span class="n">selected_day</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>  
+<span class="n">GetNextDay</span><span class="p">(</span><span class="n">selected_day</span><span class="p">,</span><span class="mi">29</span><span class="p">)</span>  
+</pre></div>
+
+
+<p>这时候偏函数派上用途了。</p>
+<div class="hlcode"><pre><span class="kn">import</span> <span class="nn">functools</span>  
+<span class="n">nday</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">GetNextDay</span><span class="p">,</span><span class="n">selected_day</span><span class="p">)</span>  
+
+<span class="n">nday</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  
+<span class="n">nday</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+<span class="n">nday</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>  
+<span class="n">nday</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>  
+<span class="n">nday</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>  
+</pre></div>
+
+
+<p>这样上面的的代码就可以简化成下面这样了。</p>
+<hr />
+<ul>
+<li>
+<h2 id="python">python @ 符号使用</h2>
+</li>
+</ul>
+<div class="hlcode"><pre><span class="nd">@dec1</span>
+<span class="nd">@dec2</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<p>类似于</p>
+<div class="hlcode"><pre><span class="n">dec1</span><span class="p">(</span><span class="n">dec2</span><span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="n">arg</span><span class="p">)))</span>
+</pre></div>
+
+
+<p>修饰函数还可以带参数。</p>
+<div class="hlcode"><pre><span class="nd">@dec1</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">testarg</span><span class="p">)</span>
+</pre></div>
+
+
+<p>效果类似于</p>
+<div class="hlcode"><pre>dec1(arg1,arg2)(test(arg))
+</pre></div>
+
+
+<hr />
+<ul>
+<li>
+<h2 id="_2">各种字符串使用</h2>
+</li>
+</ul>
+<p>去空格及特殊符号</p>
+<div class="hlcode"><pre><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">.</span><span class="n">lstrip</span><span class="p">()</span> <span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span>  
+</pre></div>
+
+
+<p>查找字符 </p>
+<div class="hlcode"><pre><span class="n">sStr</span><span class="o">=</span> <span class="s">&#39;strchr&#39;</span>  
+<span class="n">sStr</span> <span class="o">=</span> <span class="s">&#39;s&#39;</span>  
+<span class="n">nPos</span> <span class="o">=</span> <span class="n">sStr1</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sStr</span><span class="p">)</span>  
+<span class="k">print</span> <span class="n">nPos</span>
+</pre></div>
+
+
+<p>将字符串中的大小写转换 </p>
+<div class="hlcode"><pre><span class="n">sStr</span><span class="o">=</span> <span class="s">&#39;JCstrlwr&#39;</span>  
+<span class="n">sStr</span><span class="o">=</span> <span class="n">sStr1</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  
+<span class="n">sStr</span><span class="o">=</span> <span class="n">sStr1</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  
+</pre></div>
+
+
+<p>分割字符串 </p>
+<div class="hlcode"><pre><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;ab,cde,fgh,ijk&#39;</span>  
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>替换字符</p>
+<div class="hlcode"><pre><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<hr />
+<ul>
+<li>
+<h2 id="python_1">python去重</h2>
+</li>
+</ul>
+<div class="hlcode"><pre><span class="p">{}</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+
+<p>或者</p>
+<div class="hlcode"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

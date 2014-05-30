@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>ufw 使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » ufw 使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">ufw 使用</div>
+    <div id="content">
+        <ul>
+<li>启用</li>
+</ul>
+<div class="hlcode"><pre> sudo ufw enable
+ sudo ufw default deny 
+</pre></div>
+
+
+<p>作用：开启了防火墙并随系统启动同时关闭所有外部对本机的访问（本机访问外部正常）。</p>
+<ul>
+<li>
+<p>关闭
+ sudo ufw disable </p>
+</li>
+<li>
+<p>查看防火墙状态
+ sudo ufw status </p>
+</li>
+<li>
+<p>开启/禁用相应端口或服务举例</p>
+</li>
+</ul>
+<div class="hlcode"><pre> sudo ufw allow 80 允许外部访问80端口
+
+ sudo ufw delete allow 80 禁止外部访问80 端口
+
+ sudo ufw allow from 192.168.1.1 允许此IP访问所有的本机端口
+
+ sudo ufw deny smtp 禁止外部访问smtp服务
+
+ sudo ufw delete allow smtp 删除上面建立的某条规则
+
+ ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 要拒绝所有的流量从TCP的10.0.0.0/8 到端口22的地址192.168.0.1
+</pre></div>
+
+
+<p>可以允许所有RFC1918网络（局域网/无线局域网的）访问这个主机（/8,/16,/12是一种网络分级）：</p>
+<div class="hlcode"><pre>sudo ufw allow from 10.0.0.0/8
+sudo ufw allow from 172.16.0.0/12
+sudo ufw allow from 192.168.0.0/16
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

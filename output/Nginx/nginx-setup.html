@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title> nginx 源码安装 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Nginx">Nginx</a> »  nginx 源码安装
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title"> nginx 源码安装</div>
+    <div id="content">
+        <p>安装前</p>
+<div class="hlcode"><pre>apt-get install openssl
+apt-get install libssl-dev
+</pre></div>
+
+
+<div class="hlcode"><pre>cd /usr/local/src #系统第三方软件源码安装位置 
+sudo wget http://nginx.org/download/nginx-1.7.0.tar.gz 
+sudo tar -zxvf nginx-1.7.0.tar.gz cd nginx-1.7.0 
+sudo ./configure --sbin-path=/usr/local/nginx/nginx --conf-path=/usr/local/nginx/nginx.conf --pid-path=/usr/local/nginx/nginx.pid --with-http_ssl_module --with-pcre 
+</pre></div>
+
+
+<p>最后的出现</p>
+<div class="hlcode"><pre>nginx path prefix: &quot;/usr/local/nginx&quot;
+nginx binary file: &quot;/usr/local/nginx/nginx&quot;
+nginx configuration prefix: &quot;/usr/local/nginx&quot;
+nginx configuration file: &quot;/usr/local/nginx/nginx.conf&quot;
+nginx pid file: &quot;/usr/local/nginx/nginx.pid&quot;
+nginx error log file: &quot;/usr/local/nginx/logs/error.log&quot;
+nginx http access log file: &quot;/usr/local/nginx/logs/access.log&quot;
+nginx http client request body temporary files: &quot;client_body_temp&quot;
+nginx http proxy temporary files: &quot;proxy_temp&quot;
+nginx http fastcgi temporary files: &quot;fastcgi_temp&quot;
+nginx http uwsgi temporary files: &quot;uwsgi_temp&quot;
+nginx http scgi temporary files: &quot;scgi_temp&quot;
+</pre></div>
+
+
+<p>安装</p>
+<div class="hlcode"><pre>sudo make
+sudo make install
+</pre></div>
+
+
+<p>启动</p>
+<div class="hlcode"><pre>sudo /usr/local/nginx/nginx
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

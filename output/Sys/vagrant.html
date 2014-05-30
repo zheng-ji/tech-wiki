@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>vagrant 使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » vagrant 使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">vagrant 使用</div>
+    <div id="content">
+        <p>需要　<code>virtualbox</code> &amp; <code>vagrant</code></p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virutalbox</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">vagrant</span>
+</pre></div>
+
+
+<p>启动虚拟机</p>
+<div class="hlcode"><pre>vagrant init precise32 http://files.vagrantup.com/precise32.box
+vagrant up
+</pre></div>
+
+
+<p>Vagrantfile 可以配置转发端口</p>
+<p>基本命令</p>
+<div class="hlcode"><pre>$ vagrant box add NAME URL    #添加一个box
+
+$ vagrant box list            #查看本地已添加的box
+
+$ vagrant box remove NAME virtualbox #删除本地已添加的box，如若是版本1.0.x，执行$ vagrant box remove  NAME
+
+$ vagrant init NAME          #初始化，实质应是创建Vagrantfile文件
+
+$ vagrant up                   #启动虚拟机
+
+$ vagrant halt                 #关闭虚拟机
+
+$ vagrant destroy            #销毁虚拟机
+
+$ vagrant reload             #重启虚拟机
+
+$ vagrant package            #当前正在运行的VirtualBox虚拟环境打包成一个可重复使用的box
+
+$ vagrant ssh                 #进入虚拟环境
+
+$ vagrant reload    #重启后可看到虚拟机中已经安装好了apache
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>golang channel - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Go">Go</a> » golang channel
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">golang channel</div>
+    <div id="content">
+        <ul>
+<li>close twice</li>
+</ul>
+<div class="hlcode"><pre>ch := make(chan bool)
+close(ch)
+close(ch)  // 这样会panic的，channel不能close两次
+</pre></div>
+
+
+<ul>
+<li>读取的时候channel提前关闭了</li>
+</ul>
+<div class="hlcode"><pre>ch := make(chan string)
+close(ch)
+i := &lt;- ch // 不会panic, i读取到的值是空 &quot;&quot;,  如果channel是bool的，那么读取到的是false
+</pre></div>
+
+
+<ul>
+<li>向已经关闭的channel写数据</li>
+</ul>
+<div class="hlcode"><pre>ch := make(chan string)
+close(ch)
+ch &lt;- &quot;good&quot; // 会panic的
+</pre></div>
+
+
+<p>判断channel是否close</p>
+<div class="hlcode"><pre>i, ok := &lt;- ch
+if ok {
+    println(i)
+} else {
+    println(&quot;channel closed&quot;)
+}
+</pre></div>
+
+
+<ul>
+<li>for循环读取channel</li>
+</ul>
+<div class="hlcode"><pre>for i := range ch { // ch关闭时，for循环会自动结束
+    println(i)
+}
+</pre></div>
+
+
+<ul>
+<li>防止读取超时</li>
+</ul>
+<div class="hlcode"><pre>select {
+    case &lt;- time.After(time.Second*2):
+        println(&quot;read channel timeout&quot;)
+    case i := &lt;- ch:
+        println(i)
+}
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

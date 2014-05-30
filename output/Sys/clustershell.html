@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>clustershell 使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » clustershell 使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">clustershell 使用</div>
+    <div id="content">
+        <div class="hlcode"><pre>sudo apt-get install clustershell
+</pre></div>
+
+
+<p>编辑 /etc/clustershell/groups</p>
+<div class="hlcode"><pre>#/etc/clustershell/groups
+srv:vagrant
+</pre></div>
+
+
+<div class="hlcode"><pre>ssh-keygen
+</pre></div>
+
+
+<p>编辑 ~/.ssh/config</p>
+<div class="hlcode"><pre># ~/.ssh/config
+host vagrant 
+     hostname :xxx.xxx.xx.xx
+     username 123
+</pre></div>
+
+
+<div class="hlcode"><pre>ssh-copy-id -i ~/.ssh/id_dsa.pub vagrant
+</pre></div>
+
+
+<p>填入密码</p>
+<div class="hlcode"><pre>ssh vagrant
+clush -g srv “id”
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

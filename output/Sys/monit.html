@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>monit - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » monit
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">monit</div>
+    <div id="content">
+        <h3 id="_1">安装</h3>
+<p>monit可以监控服务器软件。类似 supervisord 对于python
+sudo apt-get install monit</p>
+<p>sudo vi /etc/monitrc</p>
+<p>反注释掉http块的信息</p>
+<div class="hlcode"><pre>set httpd port 2812 and
+    use address localhost  # only accept connection from localhost
+    allow localhost        # allow localhost to connect to the server and
+</pre></div>
+
+
+<h3 id="monit">创建监控改程序的monit文件</h3>
+<div class="hlcode"><pre>touch /etc/monit/conf.d/mysql.monit
+sudo vi mysql.monit
+</pre></div>
+
+
+<p>内容中，需要</p>
+<ul>
+<li>程序名</li>
+<li>程序pidfile 位置</li>
+<li>程序启动和关闭指令</li>
+</ul>
+<div class="hlcode"><pre>check process mysql with pidfile /var/lib/mysql/precess64.pid
+start program = &quot;/etc/init.d/mysql start&quot; 
+stop program = &quot;/etc/init.d/mysql stop&quot; 
+if failed host 127.0.0.1 port 3306 then restart 
+if 3 restarts within 5 cycles then timeout
+</pre></div>
+
+
+<p>V使用</p>
+<div class="hlcode"><pre>sudo service monit start
+sudo monit status
+sudo monit monitor mysql 监控mysql
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>python setuptools 使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Python">Python</a> » python setuptools 使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">python setuptools 使用</div>
+    <div id="content">
+        <p>做好一个python module 之后，可以把源代码包含进项目中。OK，但是如果有很多依赖项目的话就不好管理了，这个时候我们用 setuptools 工具来安装到系统的包。</p>
+<p>以下给出一个 demo</p>
+<div class="hlcode"><pre>mkdir hacker
+vim foo.py
+</pre></div>
+
+
+<p>编辑以下内容</p>
+<div class="hlcode"><pre><span class="k">class</span> <span class="nc">Hacker</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">motto</span> <span class="o">=</span> <span class="s">&quot;No evil, Be Hacker&quot;</span>
+    <span class="k">def</span> <span class="nf">printMotto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="bp">self</span><span class="o">.</span><span class="n">motto</span>
+</pre></div>
+
+
+<p>开始编写 setup.py, 也许是为了知识产权保护，里面按照规矩会让作者填上资料。</p>
+<div class="hlcode"><pre><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Hacker&#39;</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="s">&#39;1.0&#39;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s">&#39;be hake or be hacked&#39;</span><span class="p">,</span>
+        <span class="n">author</span><span class="o">=</span><span class="s">&#39;zheng-ji&#39;</span><span class="p">,</span>
+        <span class="n">author_email</span><span class="o">=</span><span class="s">&#39;zhengji91@gmail.com&#39;</span><span class="p">,</span>
+        <span class="n">url</span><span class="o">=</span><span class="s">&#39;http://zheng-ji.info&#39;</span><span class="p">,</span>
+        <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">],</span>
+        <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;requests&quot;</span><span class="p">]</span>
+     <span class="p">)</span>
+</pre></div>
+
+
+<p>好了，这个时候执行,</p>
+<div class="hlcode"><pre>sudo python setup.py install
+</pre></div>
+
+
+<p>该命令，会把模块复制到 /usr/lib/python2.7/ 下面. 之后可以直接 import foo, 使用该模块。</p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

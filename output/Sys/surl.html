@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>surl使用 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Sys">Sys</a> » surl使用
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">surl使用</div>
+    <div id="content">
+        <p>线上短地址服务链接:surl.youmi.net
+gitcode:https://github.com/fs111/kurz.go</p>
+<p>使用API</p>
+<ul>
+<li>生成短地址:</li>
+</ul>
+<div class="hlcode"><pre>curl -L http://surl.youmi.net/shorten/ --data-urlencode &quot;url=www.youmi.net&quot;
+</pre></div>
+
+
+<p>返回</p>
+<div class="hlcode"><pre>{&quot;Key&quot;:&quot;xx&quot;,&quot;ShortUrl&quot;:&quot;http://surl.youmi.net/xx&quot;,&quot;LongUrl&quot;:&quot;www.youmi.net&quot;,&quot;CreationDate&quot;:1321486517214982000,&quot;Clicks&quot;:0}
+</pre></div>
+
+
+<ul>
+<li>打开短地址:</li>
+</ul>
+<div class="hlcode"><pre>curl -L http://surl.youmi.net/eIi
+</pre></div>
+
+
+<ul>
+<li>解短地址:</li>
+</ul>
+<div class="hlcode"><pre>curl http://sur.youmi.net/eIi+
+</pre></div>
+
+
+<p>返回</p>
+<div class="hlcode"><pre>{&quot;Key&quot;:&quot;xx&quot;,&quot;ShortUrl&quot;:&quot;http://sur.youmi.net/eIi&quot;,&quot;LongUrl&quot;:&quot;www.youmi.bet&quot;,&quot;CreationDate&quot;:1321486517214982000,&quot;Clicks&quot;:1}
+</pre></div>
+
+
+<p><a href="http://localhost:8081/adm/">link</a></p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>curl - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Tool">Tool</a> » curl
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">curl</div>
+    <div id="content">
+        <p>一、查看网页源码
+直接在curl命令后加上网址，就可以看到网页源码。我们以网址www.sina.com为例（选择该网址，主要因为它的网页代码较短）</p>
+<div class="hlcode"><pre>curl www.sina.com
+</pre></div>
+
+
+<p>如果要把这个网页保存下来，可以使用-o参数，这就相当于使用wget命令了。</p>
+<div class="hlcode"><pre>curl -o [文件名] www.sina.com
+</pre></div>
+
+
+<p>二、自动跳转
+有的网址是自动跳转的。使用-L参数，curl就会跳转到新的网址。</p>
+<div class="hlcode"><pre>curl -L www.sina.com
+</pre></div>
+
+
+<p>键入上面的命令，结果就自动跳转为www.sina.com.cn。</p>
+<p>三、显示头信息</p>
+<p>-i参数可以显示http response的头信息，连同网页代码一起。</p>
+<div class="hlcode"><pre>curl -i www.sina.com
+</pre></div>
+
+
+<p>-I参数则是只显示http response的头信息。</p>
+<p>四、显示通信过程</p>
+<p>-v参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。</p>
+<div class="hlcode"><pre>curl -v www.sina.com
+</pre></div>
+
+
+<p>下面的命令可以查看更详细的通信过程。</p>
+<div class="hlcode"><pre>curl --trace output.txt www.sina.com
+</pre></div>
+
+
+<p>或者</p>
+<div class="hlcode"><pre>curl --trace-ascii output.txt www.sina.com
+</pre></div>
+
+
+<p>运行后，请打开output.txt文件查看。</p>
+<p>五、发送表单信息</p>
+<p>发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。</p>
+<div class="hlcode"><pre>curl example.com/form.cgi?data=xxx
+</pre></div>
+
+
+<p>POST方法必须把数据和网址分开，curl就要用到--data参数。</p>
+<div class="hlcode"><pre>curl --data &quot;data=xxx&quot; example.com/form.cgi
+</pre></div>
+
+
+<p>如果你的数据没有经过表单编码，还可以让curl为你编码，参数是--data-urlencode。</p>
+<div class="hlcode"><pre>curl --data-urlencode &quot;date=April 1&quot; example.com/form.cgi
+</pre></div>
+
+
+<p>六、HTTP动词</p>
+<p>curl默认的HTTP动词是GET，使用-X参数可以支持其他动词。</p>
+<div class="hlcode"><pre>curl -X POST www.example.com
+curl -X DELETE www.example.com
+</pre></div>
+
+
+<p>七、文件上传</p>
+<p>假定文件上传的表单是下面这样：</p>
+<div class="hlcode"><pre>&lt;form method=&quot;POST&quot; enctype=&#39;multipart/form-data&#39; action=&quot;upload.cgi&quot;&gt;
+　　&lt;input type=file name=upload&gt;
+　　&lt;input type=submit name=press value=&quot;OK&quot;&gt;
+&lt;/form&gt;
+
+curl --form upload=@localfilename --form press=OK [URL]
+</pre></div>
+
+
+<p>八、Referer字段</p>
+<p>有时你需要在http request头信息中，提供一个referer字段，表示你是从哪里跳转过来的。</p>
+<div class="hlcode"><pre>curl --referer http://www.example.com http://www.example.com
+</pre></div>
+
+
+<p>九、User Agent字段</p>
+<p>这个字段是用来表示客户端的设备信息。服务器有时会根据这个字段，针对不同设备，返回不同格式的网页，比如手机版和桌面版。
+curl可以这样模拟：</p>
+<div class="hlcode"><pre>curl --user-agent &quot;[User Agent]&quot; [URL]
+</pre></div>
+
+
+<p>十、cookie</p>
+<p>使用--cookie参数，可以让curl发送cookie。</p>
+<div class="hlcode"><pre>curl --cookie &quot;name=xxx&quot; www.example.com
+</pre></div>
+
+
+<p>至于具体的cookie的值，可以从http response头信息的Set-Cookie字段中得到。</p>
+<p>十一、增加头信息</p>
+<p>有时需要在http request之中，自行增加一个头信息。--header参数就可以起到这个作用。</p>
+<div class="hlcode"><pre>curl --header &quot;xxx: xxxxxx&quot; http://example.com
+</pre></div>
+
+
+<p>十二、HTTP认证</p>
+<p>有些网域需要HTTP认证，这时curl需要用到--user参数。</p>
+<div class="hlcode"><pre>curl --user name:password example.com
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

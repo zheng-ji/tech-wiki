@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>python hashlib模块 - zheng-ji's Wiki</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Python">Python</a> » python hashlib模块
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">python hashlib模块</div>
+    <div id="content">
+        <p>使用Python中的hashlib来进行hash加密是非学简单的，下面是一段简单代码：</p>
+<div class="hlcode"><pre><span class="kn">import</span> <span class="nn">hashlib</span>  
+<span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">()</span> <span class="c">#创建一个MD5加密对象  </span>
+<span class="n">md5</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s">&quot;JGood is a handsome boy&quot;</span><span class="p">)</span>  <span class="c">#更新要加密的数据  </span>
+<span class="k">print</span> <span class="n">md5</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>  <span class="c">#加密后的结果（二进制）  </span>
+<span class="k">print</span> <span class="n">md5</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span> <span class="c">#加密后的结果，用十六进制字符串表示。  </span>
+<span class="k">print</span> <span class="s">&#39;block_size:&#39;</span><span class="p">,</span> <span class="n">md5</span><span class="o">.</span><span class="n">block_size</span>  
+<span class="k">print</span> <span class="s">&#39;digest_size:&#39;</span><span class="p">,</span> <span class="n">md5</span><span class="o">.</span><span class="n">digest_size</span>  
+</pre></div>
+
+
+<p>非常的简单，其实如果说加密一个字符串，根本不用写上面这么多代码，一条语句就可以了：</p>
+<div class="hlcode"><pre><span class="k">print</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s">&quot;md5&quot;</span><span class="p">,</span> <span class="s">&quot;JGood is a handsome boy&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>  
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2012-2014 None.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

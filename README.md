@@ -5,4 +5,6 @@ wiki DO IT
 
 Daily note
 
-wiki.zheng-ji.info
+fork by simiki & add auto-deploy
+
+[wiki.zheng-ji.info](wiki.zheng-ji.info)

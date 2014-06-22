@@ -1,8 +1,8 @@
 ---
 - hosts: webservers
   vars:
-      src: /home/zj/mywiki/content/Sys/rsyn.md
-      des: /home/zj/mywiki/content/Sys/rsyn.md
+      src: /home/zj/mywiki/content/Sys/remove.md
+      des: /home/zj/mywiki/content/Sys/remove.md
   remote_user: zj
   tasks:
       - name: make sure nginx is running

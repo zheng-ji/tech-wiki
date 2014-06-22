@@ -23,3 +23,17 @@ max_allowed_package 可以设置大一点
 * mysql无法启动Could not find MySQL server (/usr/bin/mysqld_safe)
 删除my.cnf rm /etc/mysql/my.cnf
 
+
+* 关于Binlog
+
+```
+可以设置set global expire_logs_days=3
+show binary logs;
+purge master logs to 'mysql-bin.xxx'
+
+or
+
+PURGE {MASTER | BINARY} LOGS BEFORE ‘date’
+```
+
+

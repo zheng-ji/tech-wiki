@@ -41,7 +41,7 @@ ansible webservers -m raw -a 'sudo pip install virtualenv' -uvagrant
 * ansible-playbook 才是主角, 它是基于yaml格式,运行,--ask-sudo-pass 是为了提权需要密码
 
 ```
-ansible-playbook deploy.yaml --aks-sudo-pass
+ansible-playbook deploy.yaml --ask-sudo-pass
 ```
 
 以下是deploy.yaml 该wiki就是如此发布的

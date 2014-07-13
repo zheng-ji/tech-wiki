@@ -1,8 +1,8 @@
 ---
 - hosts: webservers
   vars:
-      src: /home/zj/mywiki/content/DB/info-bright-skill.md
-      des: /home/zj/mywiki/content/DB/info-bright-skill.md
+      src: /home/zj/mywiki/content/Sys/ansible.md
+      des: /home/zj/mywiki/content/Sys/ansible.md
   remote_user: zj
   tasks:
       - name: make sure nginx is running

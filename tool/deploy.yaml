@@ -1,13 +1,13 @@
 ---
 - hosts: webservers
   vars:
-      src: /home/zj/mywiki/content/Sys/irqbalance.md
-      des: /home/zj/mywiki/content/Sys/irqbalance.md
+      src: /home/zj/mywiki/content/Sys/upstart.md
+      des: /home/zj/mywiki/content/Sys/upstart.md
   remote_user: zj
   tasks:
-      - name: make sure nginx is running
-        service: name=nginx state=started
-        sudo: yes
+      #- name: make sure nginx is running
+      #  service: name=nginx state=started
+      #  sudo: yes
 
       - name: scp {{src}} to ramnode {{des}}
         template: src={{src}} dest={{des}}

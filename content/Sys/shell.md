@@ -32,3 +32,10 @@ Shift命令一次移动参数的个数由其所带的参数指定。例如当she
 10 
 ```
 
+--------
+
+查看当前链接状态, awk中NF是最后一个字段
+
+```
+netstat -na | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+```

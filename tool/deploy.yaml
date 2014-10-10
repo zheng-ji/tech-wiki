@@ -1,8 +1,8 @@
 ---
 - hosts: webservers
   vars:
-      src: /home/zj/mywiki/content/Sys/upstart.md
-      des: /home/zj/mywiki/content/Sys/upstart.md
+      src: /home/zj/mywiki/content/Sys/uwsgi.md
+      des: /home/zj/mywiki/content/Sys/uwsgi.md
   remote_user: zj
   tasks:
       #- name: make sure nginx is running

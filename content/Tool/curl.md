@@ -140,3 +140,11 @@ curl --header "xxx: xxxxxx" http://example.com
 ```
 curl --user name:password example.com
 ```
+
+
+十三、配置Host访问
+
+```
+curl -H "host:baidu.com" http://123.123.123.123/ping
+
+```

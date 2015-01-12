@@ -39,3 +39,9 @@ Shift命令一次移动参数的个数由其所带的参数指定。例如当she
 ```
 netstat -na | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 ```
+
+删除太多文件，需要
+
+```
+ls|xargs rm -f
+```

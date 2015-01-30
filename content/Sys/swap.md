@@ -10,7 +10,7 @@ swapoff   -a
 ```
 
 
-* . 永久关闭SWAP
+* 永久关闭SWAP
 ```
 vim /etc/fstab
 # swap was on /dev/sda11 during installation
@@ -20,10 +20,19 @@ vim /etc/fstab
 
 
 
-*. 查看SWAP分区大小
+* 查看SWAP分区大小
+
 ```
 cat /proc/meminfo
 SwapTotal:             0 kB
 wapFree:              0 kB
 ```
 如果上面二项目都为0，说明没有swap分区；如果不为0，则说明有此分区
+
+* 将磁盘格式化为swap
+
+```
+mkswap /dev/xvdc
+swapon /dev/xvdc
+``
+

@@ -33,6 +33,7 @@ wapFree:              0 kB
 
 ```
 mkswap /dev/xvdc
+
 swapon /dev/xvdc
-``
+```
 

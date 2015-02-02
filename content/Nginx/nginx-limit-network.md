@@ -13,5 +13,13 @@ location / {
     limit_rate 100k;     限制速度
 }
 ```
+
 表示限速100K每个客户端只允许一个线程
+
+限制IP:
+
+```
+allow xxx.xxx.xxx.xxx;
+deny all;
+```
 

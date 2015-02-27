@@ -16,7 +16,6 @@ sudo apt-get install uwsgi
 
 
 ```
-cat /etc/uwsgi/app-enabled/my-projcet.ini root@web01
 [uwsgi]
 auto-procname = true
 procname-prefix-spaced = my-project

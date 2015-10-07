@@ -45,3 +45,80 @@ netstat -na | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 ```
 ls|xargs rm -f
 ```
+
+* for 循环
+
+```
+#!/bin/bash
+for file in $(ls /tmp/test/ | grep sh)
+do
+    echo $file
+done
+
+for ((i=0;i<10;i++))
+do
+    echo -n $i //去掉换行符
+done
+
+for i in $(seq 1 10)
+do
+    echo -n $i
+done
+```
+
+* while 循环
+
+```
+#!/bin/bash
+i = 0
+while ((i<10)) //双括号
+do
+    echo $i
+    ((i += 1))
+done
+
+i = 0
+while [ $i -lt 10 ] // zhonguoh内测两边有空格
+do
+    echo $i
+    let "i+=1"
+done
+exit
+```
+
+* if 语句
+
+```
+#!/bin/bash
+if [ $num -lt 60]
+then
+    echo "xx"
+elif [ $num -lt 70 ] && [ $num -ge 60 ]
+then
+    echo "xxx"
+else
+    echo "xxxx"
+fi
+exit 0
+```
+
+* case 语句
+
+```
+#!/bin/bash
+case $1 in
+    start)
+    echo "start ok"
+    ;;
+    stop)
+    echo  "stop ok"
+    ;;
+    restart)
+    echo "restart ok"
+    ;;
+    *)
+    echo  "no param"
+    ;;
+esac
+exit 0
+```

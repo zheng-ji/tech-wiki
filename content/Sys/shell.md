@@ -90,7 +90,7 @@ exit
 
 ```
 #!/bin/bash
-if [ $num -lt 60]
+if [ $num -lt 60 ]
 then
     echo "xx"
 elif [ $num -lt 70 ] && [ $num -ge 60 ]

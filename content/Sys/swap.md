@@ -37,3 +37,15 @@ mkswap /dev/xvdc
 swapon /dev/xvdc
 ```
 
+* 用dd来做一个swap
+
+swap 大小，count= 後面的數字是MB
+
+```
+dd if=/dev/zero of=/swapfile bs=1M count=1024
+mkswap /swapfile
+swapon /swapfile
+# edit /etc/fstab
+/swapfile swap swap defaults 0 0
+```
+
